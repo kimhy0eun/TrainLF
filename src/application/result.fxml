@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="traint" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resultController">
+   <children>
+      <BorderPane>
+         <top>
+            <BorderPane prefHeight="54.0" prefWidth="350.0" style="-fx-background-color: #eaeaea;" BorderPane.alignment="CENTER">
+               <center>
+                  <Label prefHeight="15.0" prefWidth="83.0" text="예매 정보 확인" BorderPane.alignment="CENTER" />
+               </center>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </BorderPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8fbd8f;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="printandgomain" layoutX="205.0" layoutY="350.0" mnemonicParsing="false" onAction="#printandgomain" prefHeight="50.0" prefWidth="95.0" text="완료" />
+                  <Label fx:id="warning" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="351.0" prefHeight="15.0" prefWidth="136.0" text=" " textFill="#d00d0d" />
+                  <TextField alignment="CENTER" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="23.0" prefWidth="72.0" style="-fx-background-color: #FFFF99;" text="출발역" />
+                  <Button fx:id="gomain" layoutX="53.0" layoutY="351.0" mnemonicParsing="false" onAction="#gomain" prefHeight="48.0" prefWidth="93.0" text="취소" />
+                  <TextField alignment="CENTER" editable="false" layoutX="14.0" layoutY="48.0" prefHeight="23.0" prefWidth="73.0" style="-fx-background-color: #FFFF99;" text="기차" />
+                  <TextField alignment="CENTER" editable="false" layoutX="175.0" layoutY="14.0" prefHeight="23.0" prefWidth="77.0" style="-fx-background-color: #FFFF99;" text="도착역" />
+                  <TextField alignment="CENTER" editable="false" layoutX="175.0" layoutY="48.0" prefHeight="23.0" prefWidth="78.0" style="-fx-background-color: #FFFF99;" text="시간" />
+                  <TextField alignment="CENTER" editable="false" layoutX="14.0" layoutY="82.0" prefHeight="24.0" prefWidth="41.0" style="-fx-background-color: #FFFF99;" text="인원" />
+                  <TextField alignment="CENTER" editable="false" layoutX="149.0" layoutY="121.0" prefHeight="17.0" prefWidth="50.0" style="-fx-background-color: #FFFF99;" text="좌석" />
+                  <TextField alignment="CENTER" editable="false" layoutX="266.0" layoutY="82.0" prefHeight="23.0" prefWidth="50.0" style="-fx-background-color: #48c41f;" text="어린이" />
+                  <TextField alignment="CENTER" editable="false" layoutX="186.0" layoutY="82.0" prefHeight="23.0" prefWidth="40.0" style="-fx-background-color: #48c41f;" text="노인" />
+                  <TextField alignment="CENTER" editable="false" layoutX="62.0" layoutY="82.0" prefHeight="23.0" prefWidth="75.0" style="-fx-background-color: #48c41f;" text="성인/청소년">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="resultfrom" alignment="CENTER" editable="false" layoutX="91.0" layoutY="14.0" prefHeight="23.0" prefWidth="74.0" />
+                  <TextField fx:id="resultgeneral" alignment="CENTER" editable="false" layoutX="137.0" layoutY="82.0" prefHeight="23.0" prefWidth="33.0" />
+                  <TextField fx:id="resulttrain" alignment="CENTER" editable="false" layoutX="91.0" layoutY="48.0" prefHeight="23.0" prefWidth="74.0" />
+                  <TextField fx:id="resulttime" alignment="CENTER" editable="false" layoutX="258.0" layoutY="48.0" prefHeight="23.0" prefWidth="82.0" />
+                  <TextField fx:id="resultto" alignment="CENTER" editable="false" layoutX="258.0" layoutY="13.0" prefHeight="23.0" prefWidth="83.0" />
+                  <TextField fx:id="resultold" alignment="CENTER" editable="false" layoutX="226.0" layoutY="82.0" prefHeight="23.0" prefWidth="30.0" />
+                  <TextField fx:id="resultyoung" alignment="CENTER" editable="false" layoutX="316.0" layoutY="82.0" prefHeight="23.0" prefWidth="30.0" />
+                  <VBox layoutX="68.0" layoutY="156.0" prefHeight="135.0" prefWidth="214.0" style="-fx-background-color: #acd3e5;">
+                     <children>
+                        <HBox prefHeight="28.0" prefWidth="100.0">
+                           <children>
+                              <TextField fx:id="resultseat1" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="100.0" />
+                              <TextField fx:id="resultseat2" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="100.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="28.0" prefWidth="100.0">
+                           <children>
+                              <TextField fx:id="resultseat3" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="100.0" />
+                              <TextField fx:id="resultseat4" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="100.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="100.0">
+                           <children>
+                              <TextField fx:id="resultseat5" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="100.0" />
+                              <TextField fx:id="resultseat6" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="100.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="25.0" prefWidth="132.0">
+                           <children>
+                              <TextField fx:id="resultseat7" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="100.0" />
+                              <TextField fx:id="resultseat8" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="100.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="25.0" prefWidth="132.0">
+                           <children>
+                              <TextField fx:id="resultseat9" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="100.0" />
+                              <TextField fx:id="resultseat10" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="100.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <TextField alignment="CENTER" editable="false" layoutX="117.0" layoutY="312.0" prefHeight="24.0" prefWidth="41.0" style="-fx-background-color: #FFFF99;" text="요금" />
+                  <TextField fx:id="resultmoney" alignment="CENTER" editable="false" layoutX="167.0" layoutY="313.0" prefHeight="23.0" prefWidth="77.0" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>
