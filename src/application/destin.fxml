@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<StackPane fx:id="destin" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DestinController">
+<StackPane fx:id="destin" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DestinController">
    <children>
       <BorderPane>
          <top>
             <BorderPane prefHeight="54.0" prefWidth="350.0" style="-fx-background-color: #eaeaea;" BorderPane.alignment="CENTER">
                <left>
-                  <Button fx:id="btnMain" mnemonicParsing="false" onAction="#handleBtnBack" text="이전" BorderPane.alignment="CENTER" />
+                  <Button fx:id="btnMain" mnemonicParsing="false" onAction="#handleBtnBack" text="이전" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font></Button>
                </left>
                <right>
-                  <Button fx:id="exit" mnemonicParsing="false" onAction="#exit" text="종료" BorderPane.alignment="CENTER" />
+                  <Button fx:id="exit" mnemonicParsing="false" onAction="#exit" text="종료" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font></Button>
                </right>
                <center>
-                  <Label text="목적지 선택" BorderPane.alignment="CENTER" />
+                  <Label text="분실물 등록" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="15.0" />
+                     </font></Label>
                </center>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -33,45 +38,52 @@
             </BorderPane>
          </top>
          <center>
-            <AnchorPane prefHeight="446.0" prefWidth="350.0" style="-fx-background-color: #8fbd8f;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="446.0" prefWidth="350.0" style="-fx-background-color: #BCC7DC;" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="gotraintype" layoutX="243.0" layoutY="339.0" mnemonicParsing="false" onAction="#handlegotraintype" text="다음" />
-                  <ComboBox fx:id="combobox" layoutX="168.0" layoutY="198.0" prefWidth="150.0" promptText="없음">
-     				 <items>
-                  		<FXCollections fx:factory="observableArrayList">
-                  			<String fx:value="오송" />
-                  			<String fx:value="충주" />
-                  			<String fx:value="대전" />
-                  			<String fx:value="김천" />
-                  			<String fx:value="부산" />
-                  			<String fx:value="영동" />
-                  			<String fx:value="서울" />
-                  			<String fx:value="구미" />
-                  			<String fx:value="수원" />
-                  			<String fx:value="인천" />
-                  			<String fx:value="천안" />
-                  			<String fx:value="울산" />
-                  			<String fx:value="대구" />
-                  			<String fx:value="광주" />
-                  			<String fx:value="대천" />
-                  			
-                  		</FXCollections>
-                  	</items>
-                  </ComboBox>
-                  <ImageView fitHeight="110.0" fitWidth="209.0" layoutX="79.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@trainpicture/청주역.PNG" />
-                     </image>
-                  </ImageView>
-                  <TextField editable="false" layoutX="168.0" layoutY="157.0" text="청주역" />
-                  <ImageView fitHeight="122.0" fitWidth="109.0" layoutX="67.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@trainpicture/어디감.PNG" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="warning" layoutX="203.0" layoutY="308.0" prefHeight="15.0" prefWidth="120.0" text=" " textFill="#c9160c" />
-                  <TextField editable="false" layoutX="59.0" layoutY="157.0" prefHeight="23.0" prefWidth="53.0" style="-fx-background-color: #FFFF99;" text="출발지" />
-                  <TextField editable="false" layoutX="22.0" layoutY="198.0" prefHeight="23.0" prefWidth="126.0" style="-fx-background-color: #FFFF99;" text="목적지를 선택하세요" />
+                  <Button fx:id="gotraintype" layoutX="283.0" layoutY="373.0" mnemonicParsing="false" onAction="#handlegotraintype" text="다음">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="15.0" />
+                     </font></Button>
+                  <TextField layoutX="149.0" layoutY="74.0">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField alignment="CENTER" layoutX="22.0" layoutY="74.0" prefHeight="30.0" prefWidth="91.0" text="기차 번호">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField alignment="CENTER" layoutX="22.0" layoutY="147.0" prefHeight="30.0" prefWidth="92.0" text="호차">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="149.0" layoutY="147.0">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField alignment="CENTER" layoutX="22.0" layoutY="223.0" prefHeight="30.0" prefWidth="92.0" text="좌석번호">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="149.0" layoutY="223.0">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField alignment="CENTER" layoutX="22.0" layoutY="293.0" prefHeight="30.0" prefWidth="92.0" text="분실물 종류">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="149.0" layoutY="293.0">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="14.0" />
+                     </font>
+                  </TextField>
                </children>
             </AnchorPane>
          </center>
