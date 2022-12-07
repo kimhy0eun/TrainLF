@@ -50,7 +50,10 @@
           
                   </ListView>
                   <Button fx:id="next" layoutX="290.0" layoutY="385.0" mnemonicParsing="false" text="다음" />
-                  <TextField alignment="CENTER" editable="false" layoutX="18.0" layoutY="29.0" prefHeight="23.0" prefWidth="126.0" style="-fx-background-color: #eaeaea;" text="입력하신 날짜 &amp; 기차" />
+                  <TextField alignment="CENTER" editable="false" layoutX="18.0" layoutY="29.0" prefHeight="23.0" prefWidth="126.0" style="-fx-background-color: #eaeaea;" text="입력하신 날짜 &amp; 기차">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="10.0" />
+                     </font></TextField>
                </children>
             </AnchorPane>
          </center>
