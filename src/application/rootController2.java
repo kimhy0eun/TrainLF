@@ -51,7 +51,7 @@ public class rootController2 implements Initializable {
 	
 	public void  handleBtnLogin(ActionEvent event) {
 		try {
-			Parent login= FXMLLoader.load(getClass().getResource("destin.fxml"));
+			Parent login= FXMLLoader.load(getClass().getResource("login.fxml"));
 			StackPane root = (StackPane) btnLogin.getScene().getRoot();
 			root.getChildren().add(login);
 			
