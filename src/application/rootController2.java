@@ -66,7 +66,23 @@ public class rootController2 implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	public void exit(ActionEvent event) {
-		Platform.exit();
+
+	
+	public void searchbtn(ActionEvent event) {
+		try {
+			Parent login= FXMLLoader.load(getClass().getResource("search.fxml"));
+			StackPane root = (StackPane) found.getScene().getRoot();
+			root.getChildren().add(login);
+			
+			login.setTranslateX(350);
+
+			Timeline timeline = new Timeline();
+			KeyValue keyValue = new KeyValue(login.translateXProperty(), 0);
+			KeyFrame keyFrame = new KeyFrame(Duration.millis(100), keyValue);
+			timeline.getKeyFrames().add(keyFrame);
+			timeline.play();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -23,10 +24,11 @@ import javafx.util.Duration;
 public class DestinController implements Initializable  {
 	@FXML private StackPane destin;
 	@FXML private Button btnMain;
-	@FXML private Button gotraintype;
+	@FXML private Button searchlist;
 	@FXML private ComboBox<String> combobox;
 	@FXML private Label warning;
 	@FXML Button exit;
+	@FXML private DatePicker datepicker;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -60,31 +62,32 @@ public class DestinController implements Initializable  {
 			e.printStackTrace();
 		}
 	}
-	public void handlegotraintype(ActionEvent event) {
-		destination = combobox.getValue();
-		if(destination!=null) {
-			try {
-				warning.setText("");
-				Parent traintype= FXMLLoader.load(getClass().getResource("traintype.fxml"));
-				StackPane root = (StackPane) gotraintype.getScene().getRoot();
-				root.getChildren().add(traintype);
-			
-				traintype.setTranslateX(350);
+	
+	public void searchlist(ActionEvent event) {
+		try {
+			Parent login= FXMLLoader.load(getClass().getResource("traintype.fxml"));
+			StackPane root = (StackPane) searchlist.getScene().getRoot();
+			root.getChildren().add(login);
 
-				Timeline timeline = new Timeline();
-				KeyValue keyValue = new KeyValue(traintype.translateXProperty(), 0);
-				KeyFrame keyFrame = new KeyFrame(Duration.millis(100), keyValue);
-				timeline.getKeyFrames().add(keyFrame);
-				timeline.play();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		else {
-			warning.setText("목적지를 선택하세요!");
+			login.setTranslateX(350);
+
+			Timeline timeline = new Timeline();
+			KeyValue keyValue = new KeyValue(login.translateXProperty(), 0);
+			KeyFrame keyFrame = new KeyFrame(Duration.millis(100), keyValue);
+			timeline.getKeyFrames().add(keyFrame);
+			timeline.play();
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
+	
+    public void selectdate(ActionEvent event) {	
+    	//선택된 날짜의 값을 문자열로 변환 해서 문자열에 저장합니다.
+    	String strDate = datepicker.getValue().toString();
+    }
+	
 	public void exit(ActionEvent event) {
 		Platform.exit();
 	}
+	
 }
