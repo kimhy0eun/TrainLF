@@ -14,18 +14,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
-public class DestinController implements Initializable  {
-	@FXML private StackPane register;
+public class search implements Initializable {
+	@FXML private StackPane destin;
+	@FXML private StackPane traintype;
 	@FXML private Button btnMain;
-	@FXML private Button registerComplete;
 	@FXML Button exit;
-	@FXML private Label warning;
+	@FXML private Button searchlist;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -39,16 +36,16 @@ public class DestinController implements Initializable  {
 		try {
 			StackPane root = (StackPane) btnMain.getScene().getRoot();
 			
-			register.setTranslateX(0);
+			destin.setTranslateX(0);
 			
 			Timeline timeline = new Timeline();
-			KeyValue keyValue = new KeyValue(register.translateXProperty(), 350);
+			KeyValue keyValue = new KeyValue(destin.translateXProperty(), 350);
 			KeyFrame keyFrame = new KeyFrame(
 	    		Duration.millis(100), 
 	    		new EventHandler<ActionEvent>() {
 		        	@Override
 		        	public void handle(ActionEvent event) {
-		        		root.getChildren().remove(register);
+		        		root.getChildren().remove(destin);
 		        	}
 		        }, 
 		        keyValue
@@ -59,38 +56,26 @@ public class DestinController implements Initializable  {
 			e.printStackTrace();
 		}
 	}
-	
-	public void handleregisterComplete(ActionEvent event) {
-		
-			try {
-				StackPane root = (StackPane) registerComplete.getScene().getRoot();
-				
-				register.setTranslateX(0);
-				
-				Timeline timeline = new Timeline();
-				KeyValue keyValue = new KeyValue(register.translateXProperty(), 350);
-				KeyFrame keyFrame = new KeyFrame(
-		    		Duration.millis(100), 
-		    		new EventHandler<ActionEvent>() {
-			        	@Override
-			        	public void handle(ActionEvent event) {
-			        		root.getChildren().remove(register);
-			        	}
-			        }, 
-			        keyValue
-		        );
-				timeline.getKeyFrames().add(keyFrame);
-				timeline.play();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-			
-		
-	}
-	 
+	   public void searchlist(ActionEvent event) {
+		      try {
+		         Parent login= FXMLLoader.load(getClass().getResource("traintype.fxml"));
+		         StackPane root = (StackPane) searchlist.getScene().getRoot();
+		         root.getChildren().add(login);
+
+		         login.setTranslateX(350);
+
+		         Timeline timeline = new Timeline();
+		         KeyValue keyValue = new KeyValue(login.translateXProperty(), 0);
+		         KeyFrame keyFrame = new KeyFrame(Duration.millis(100), keyValue);
+		         timeline.getKeyFrames().add(keyFrame);
+		         timeline.play();
+		      } catch(Exception e) {
+		         e.printStackTrace();
+		      }
+		   }
+		   
 
 	public void exit(ActionEvent event) {
 		Platform.exit();
 	}
 }
-
