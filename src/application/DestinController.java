@@ -21,35 +21,35 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 public class DestinController implements Initializable  {
-	@FXML private StackPane destin;
+	@FXML private StackPane register;
+	@FXML private StackPane traintype;
 	@FXML private Button btnMain;
-	@FXML private Button gotraintype;
-	@FXML private ComboBox<String> combobox;
-	@FXML private Label warning;
+	@FXML private Button registerComplete;
 	@FXML Button exit;
+	@FXML private Label warning;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 	}
-	static String destination; //스태틱을 안붙이면 씬을 넘어갈때 값이 저장이 안됨.
+	static String complete; //스태틱을 안붙이면 씬을 넘어갈때 값이 저장이 안됨.
 	String getdestination() {
-		return destination;
+		return complete;
 	}
 	public void handleBtnBack(ActionEvent event) {
 		try {
 			StackPane root = (StackPane) btnMain.getScene().getRoot();
 			
-			destin.setTranslateX(0);
+			register.setTranslateX(0);
 			
 			Timeline timeline = new Timeline();
-			KeyValue keyValue = new KeyValue(destin.translateXProperty(), 350);
+			KeyValue keyValue = new KeyValue(register.translateXProperty(), 350);
 			KeyFrame keyFrame = new KeyFrame(
 	    		Duration.millis(100), 
 	    		new EventHandler<ActionEvent>() {
 		        	@Override
 		        	public void handle(ActionEvent event) {
-		        		root.getChildren().remove(destin);
+		        		root.getChildren().remove(register);
 		        	}
 		        }, 
 		        keyValue
@@ -60,29 +60,33 @@ public class DestinController implements Initializable  {
 			e.printStackTrace();
 		}
 	}
-	public void handlegotraintype(ActionEvent event) {
-		destination = combobox.getValue();
-		if(destination!=null) {
+	
+	public void handleregisterComplete(ActionEvent event) {
+		
 			try {
-				warning.setText("");
-				Parent traintype= FXMLLoader.load(getClass().getResource("traintype.fxml"));
-				StackPane root = (StackPane) gotraintype.getScene().getRoot();
-				root.getChildren().add(traintype);
-			
-				traintype.setTranslateX(350);
-
+				StackPane root = (StackPane) registerComplete.getScene().getRoot();
+				
+				register.setTranslateX(0);
+				
 				Timeline timeline = new Timeline();
-				KeyValue keyValue = new KeyValue(traintype.translateXProperty(), 0);
-				KeyFrame keyFrame = new KeyFrame(Duration.millis(100), keyValue);
+				KeyValue keyValue = new KeyValue(register.translateXProperty(), 350);
+				KeyFrame keyFrame = new KeyFrame(
+		    		Duration.millis(100), 
+		    		new EventHandler<ActionEvent>() {
+			        	@Override
+			        	public void handle(ActionEvent event) {
+			        		root.getChildren().remove(register);
+			        	}
+			        }, 
+			        keyValue
+		        );
 				timeline.getKeyFrames().add(keyFrame);
 				timeline.play();
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-		}
-		else {
-			warning.setText("목적지를 선택하세요!");
-		}
+			
+		
 	}
 	public void exit(ActionEvent event) {
 		Platform.exit();
