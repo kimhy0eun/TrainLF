@@ -45,16 +45,6 @@ public class DestinController implements Initializable  {
 	@FXML private TableColumn<LFinfo, String> table_gdate;
 	@FXML private TableColumn<LFinfo, String> table_lfk;
 	
-	
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		table_tk.setCellValueFactory(new PropertyValueFactory<>("tk"));
-		table_tn.setCellValueFactory(new PropertyValueFactory<>("tn"));
-		table_gdate.setCellValueFactory(new PropertyValueFactory<>("gdate"));
-		table_lfk.setCellValueFactory(new PropertyValueFactory<>("lfk"));
-		table_lf.setItems(getLFinfoList());
-	}
 	static String complete; //스태틱을 안붙이면 씬을 넘어갈때 값이 저장이 안됨.
 	String getdestination() {
 		return complete;
@@ -83,6 +73,17 @@ public class DestinController implements Initializable  {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		table_tk.setCellValueFactory(new PropertyValueFactory<>("tk"));
+		table_tn.setCellValueFactory(new PropertyValueFactory<>("tn"));
+		table_gdate.setCellValueFactory(new PropertyValueFactory<>("gdate"));
+		table_lfk.setCellValueFactory(new PropertyValueFactory<>("lfk"));
+		table_lf.setItems(getLFinfoList());
+	}
+	
 	
 	public void handleregisterComplete(ActionEvent event) {
 		

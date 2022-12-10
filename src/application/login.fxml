@@ -27,7 +27,7 @@
                      
 					</center>
                <left>
-                  <Button fx:id="btnMain" mnemonicParsing="false" text="이전" BorderPane.alignment="CENTER">
+                  <Button fx:id="btnMain" mnemonicParsing="false" onAction="#handleBtnBack" text="이전" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets left="10.0" />
                      </BorderPane.margin>
