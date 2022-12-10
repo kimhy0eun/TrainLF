@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.findController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eaeaea;">
+         <top>
+            <BorderPane prefHeight="51.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+               <left>
+                  <Button fx:id="btnMain" mnemonicParsing="false" text="이전" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets left="10.0" />
+                     </BorderPane.margin>
+                  </Button>
+               </left>
+               <right>
+                  <Button fx:id="btnExit" mnemonicParsing="false" text="종료" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets right="10.0" />
+                     </BorderPane.margin>
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </right>
+               <center>
+                  <Label text="분실물 등록 및 삭제" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </center>
+            </BorderPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="473.0" prefWidth="350.0" style="-fx-background-color: #BCC7DC;" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="table" prefHeight="304.0" prefWidth="358.0">
+                    <columns>
+                        <TableColumn fx:id="TrainColumn" prefWidth="113.60003358125687" text="기차 종류" />
+                      <TableColumn fx:id="DateColumn" prefWidth="120.79998779296875" text="습득 날짜" />
+                      <TableColumn fx:id="LostColumn" prefWidth="122.40001525878904" text="분실물 종류" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="LostField" alignment="CENTER" layoutX="14.0" layoutY="335.0" prefHeight="46.0" prefWidth="323.0" style="-fx-background-color: #BCC7DC;" text="해당 물건이 있다면 선택 후 삭제 버튼을 눌러주세요." AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="335.0">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="13.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="deletebtn" layoutX="150.0" layoutY="395.0" mnemonicParsing="false" onAction="#delete" text="삭제" AnchorPane.rightAnchor="142.43077781180685">
+                     <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

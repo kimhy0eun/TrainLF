@@ -51,7 +51,7 @@
                      </font>
                   </TextField>
                   <DatePicker fx:id="datepicker" layoutX="148.0" layoutY="73.0" prefHeight="30.0" prefWidth="186.4" />
-                  <TextField alignment="CENTER" layoutX="22.0" layoutY="147.0" prefHeight="30.0" prefWidth="92.0" text="기차 번호">
+                  <TextField alignment="CENTER" layoutX="22.0" layoutY="147.0" prefHeight="30.0" prefWidth="92.0" text="기차 종류">
                      <font>
                         <Font name="Malgun Gothic Bold" size="14.0" />
                      </font>

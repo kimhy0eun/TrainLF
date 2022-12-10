@@ -58,7 +58,7 @@ public class search implements Initializable {
 	}
 	   public void searchlist(ActionEvent event) {
 		      try {
-		         Parent login= FXMLLoader.load(getClass().getResource("traintype.fxml"));
+		         Parent login= FXMLLoader.load(getClass().getResource("finddelete.fxml"));
 		         StackPane root = (StackPane) searchlist.getScene().getRoot();
 		         root.getChildren().add(login);
 
