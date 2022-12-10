@@ -10,6 +10,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,16 +29,48 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class loginController implements Initializable{
+	@FXML private StackPane Login;
 	@FXML private Button login;
 	@FXML private TextField crewid;
 	@FXML private PasswordField pwd;
-	@FXML private Button regisbtn;
+	@FXML private Button regisbtn,btnMain;
+	
 	final int FL = 10;
 	private Stage primaryStage;
 	 
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
+    
+    static String complete; //스태틱을 안붙이면 씬을 넘어갈때 값이 저장이 안됨.
+	String getdestination() {
+		return complete;
+	}
+    
+    public void handleBtnBack(ActionEvent event) {
+		try {
+			StackPane root = (StackPane) btnMain.getScene().getRoot();
+			
+			Login.setTranslateX(0);
+			
+			Timeline timeline = new Timeline();
+			KeyValue keyValue = new KeyValue(Login.translateXProperty(), 350);
+			KeyFrame keyFrame = new KeyFrame(
+	    		Duration.millis(100), 
+	    		new EventHandler<ActionEvent>() {
+		        	@Override
+		        	public void handle(ActionEvent event) {
+		        		root.getChildren().remove(Login);
+		        	}
+		        }, 
+		        keyValue
+	        );
+			timeline.getKeyFrames().add(keyFrame);
+			timeline.play();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
