@@ -43,7 +43,7 @@ public class RegisterController implements Initializable {
     private TextField LostField;
    
     @FXML
-    private Button registerbtn, deletebtn;
+    private Button registerbtn;
     @FXML private StackPane register;
     
    
@@ -56,7 +56,7 @@ public class RegisterController implements Initializable {
     
     
     ObservableList<User> list = FXCollections.observableArrayList(
-          new User(new SimpleStringProperty("무궁화호"),new SimpleIntegerProperty(221010),new SimpleStringProperty("아이폰")));
+          new User(new SimpleStringProperty("ex)무궁화호"),new SimpleIntegerProperty(221010),new SimpleStringProperty("ex)아이폰")));
     
     @Override
     public void initialize(URL location, ResourceBundle resource) {
