@@ -69,7 +69,7 @@
                         <Font name="Malgun Gothic Bold" size="13.0" />
                      </font>
                   </TextField>
-                  <DatePicker fx:id="DateField" layoutX="104.0" layoutY="298.0" prefHeight="28.0" prefWidth="198.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="295.0" />
+                  <TextField fx:id="DateField" layoutX="104.0" layoutY="298.0" prefHeight="28.0" prefWidth="198.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="295.0" />
                   <TextField fx:id="LostField" alignment="CENTER" layoutX="104.0" layoutY="350.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="345.0">
                      <padding>
                         <Insets bottom="5.0" top="5.0" />
