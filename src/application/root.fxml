@@ -28,7 +28,7 @@
                <children>
                   <ImageView fitHeight="219.0" fitWidth="248.0" layoutX="66.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../test1/Train-amico.png" />
+                        <Image url="@../train/Train-amico.png" />
                      </image>
                   </ImageView>
 
