@@ -81,11 +81,11 @@ public class RegisterController implements Initializable {
        
     }
     
-    @FXML
+    /*@FXML
     private void delete(ActionEvent event) {
        table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
        
-    }
+    }*/
     
     
     public void exit(ActionEvent event) {
