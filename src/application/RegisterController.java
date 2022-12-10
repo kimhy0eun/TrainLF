@@ -3,6 +3,8 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+import javafx.application.Platform;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -15,8 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 
 public class RegisterController implements Initializable {
 	@FXML
@@ -39,9 +41,19 @@ public class RegisterController implements Initializable {
     
     @FXML
     private TextField LostField;
-    
+   
     @FXML
     private Button registerbtn;
+    @FXML private StackPane register;
+    
+   
+    
+    static String complete; //스태틱을 안붙이면 씬을 넘어갈때 값이 저장이 안됨.
+	String getdestination() {
+		return complete;
+	}
+    
+    
     
     ObservableList<User> list = FXCollections.observableArrayList(
     		new User(new SimpleStringProperty("무궁화호"),new SimpleIntegerProperty(221010),new SimpleStringProperty("아이폰")));
@@ -62,22 +74,9 @@ public class RegisterController implements Initializable {
     		}
     	});
     }
- /*   
-    //등록버튼
-    @FXML
-    void registerbtn(ActionEvent event) {
-    	User user = new User(TrainField.getText(),
-    			Integer.parseInt(DateField.getText()),
-    			LostField.getText());
-    	ObservableList<User> users = table.getItems();
-    	users.add(user);
-    	table.setItems(users);
-    }
     
-    //삭제버튼
-    @FXML
-    void deletebtn(ActionEvent event) {
-    	int selectedID = table.getSelectionModel().getSelectedIndex();
-    	table.getItems().remove(selectedID);
-    }*/
+    public void exit(ActionEvent event) {
+		Platform.exit();
+	}
+ 
 }
