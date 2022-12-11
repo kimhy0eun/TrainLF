@@ -2,15 +2,16 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="destin" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.search">
+<StackPane fx:id="destin" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SearchController">
    <children>
       <BorderPane>
          <top>
@@ -28,7 +29,7 @@
                      </font></Button>
                </right>
                <center>
-                  <Label text="분실물 찾기" BorderPane.alignment="CENTER">
+                  <Label text="분실물 검색" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="Malgun Gothic Bold" size="15.0" />
                      </font></Label>
@@ -41,26 +42,19 @@
          <center>
             <AnchorPane prefHeight="446.0" prefWidth="350.0" style="-fx-background-color: #BCC7DC;" BorderPane.alignment="CENTER">
                <children>
+                  <TextField fx:id="searchBox" layoutX="129.0" layoutY="40.0" prefHeight="31.0" prefWidth="170.0" />
+                  <Button layoutX="299.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleClearSearchText" prefHeight="30.0" prefWidth="33.0" text="X" />
+                  <TableView fx:id="trainTable" layoutX="18.0" layoutY="87.0" prefHeight="278.0" prefWidth="316.0">
+                    <columns>
+                        <TableColumn fx:id="date" prefWidth="104.0" text="기차종류" />
+                      <TableColumn fx:id="train" prefWidth="105.59997177124023" text="습득날짜" />
+                      <TableColumn fx:id="lost" prefWidth="105.60005187988281" text="분실물 종류" />
+                    </columns>
+                  </TableView>
                   <Button fx:id="searchlist" layoutX="283.0" layoutY="373.0" mnemonicParsing="false" onAction="#searchlist" text="찾기">
                      <font>
                         <Font name="Malgun Gothic Bold" size="15.0" />
                      </font></Button>
-                  <TextField alignment="CENTER" layoutX="22.0" layoutY="74.0" prefHeight="30.0" prefWidth="91.0" text="날짜">
-                     <font>
-                        <Font name="Malgun Gothic Bold" size="14.0" />
-                     </font>
-                  </TextField>
-                  <DatePicker fx:id="datepicker" layoutX="148.0" layoutY="73.0" prefHeight="30.0" prefWidth="186.4" />
-                  <TextField alignment="CENTER" layoutX="22.0" layoutY="147.0" prefHeight="30.0" prefWidth="92.0" text="기차 종류">
-                     <font>
-                        <Font name="Malgun Gothic Bold" size="14.0" />
-                     </font>
-                  </TextField>
-                  <TextField layoutX="149.0" layoutY="147.0">
-                     <font>
-                        <Font name="Malgun Gothic Bold" size="14.0" />
-                     </font>
-                  </TextField>
                </children>
             </AnchorPane>
          </center>

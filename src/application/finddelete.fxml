@@ -37,7 +37,7 @@
                   </Button>
                </right>
                <center>
-                  <Label text="분실물 등록 및 삭제" BorderPane.alignment="CENTER">
+                  <Label text="분실물 삭제" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="Malgun Gothic Bold" size="14.0" />
                      </font>

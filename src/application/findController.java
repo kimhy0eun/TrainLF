@@ -52,9 +52,9 @@ public class findController implements Initializable {
     }*/
     
     ObservableList<User> list = FXCollections.observableArrayList(
-    		new User(new SimpleStringProperty("무궁화호"),new SimpleIntegerProperty(221010),new SimpleStringProperty("아이폰")),
-    		new User(new SimpleStringProperty("ktx"),new SimpleIntegerProperty(221110),new SimpleStringProperty("지갑"))
-    		,new User(new SimpleStringProperty("srt"),new SimpleIntegerProperty(221214),new SimpleStringProperty("버즈")));
+    		new User(new SimpleStringProperty("무궁화호"),new SimpleIntegerProperty(221010),new SimpleStringProperty("아이폰")));
+    		//new User(new SimpleStringProperty("ktx"),new SimpleIntegerProperty(221110),new SimpleStringProperty("지갑"))
+    		//,new User(new SimpleStringProperty("srt"),new SimpleIntegerProperty(221214),new SimpleStringProperty("버즈")));
     
     @Override
     public void initialize(URL location, ResourceBundle resource) {
