@@ -33,7 +33,7 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 public class SearchController implements Initializable {
-	@FXML private StackPane destin;
+	@FXML private StackPane search;
 	@FXML private StackPane traintype;
 	@FXML private Button btnMain;
 	@FXML Button exit;
@@ -165,16 +165,16 @@ public class SearchController implements Initializable {
 		try {
 			StackPane root = (StackPane) btnMain.getScene().getRoot();
 			
-			destin.setTranslateX(0);
+			search.setTranslateX(0);
 			
 			Timeline timeline = new Timeline();
-			KeyValue keyValue = new KeyValue(destin.translateXProperty(), 350);
+			KeyValue keyValue = new KeyValue(search.translateXProperty(), 350);
 			KeyFrame keyFrame = new KeyFrame(
 	    		Duration.millis(100), 
 	    		new EventHandler<ActionEvent>() {
 		        	@Override
 		        	public void handle(ActionEvent event) {
-		        		root.getChildren().remove(destin);
+		        		root.getChildren().remove(search);
 		        	}
 		        }, 
 		        keyValue

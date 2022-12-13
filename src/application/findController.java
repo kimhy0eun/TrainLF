@@ -3,6 +3,10 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -17,8 +21,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 
 public class findController implements Initializable {
+	@FXML private StackPane finddelete;
+	@FXML private Button btnMain, exit;
 	@FXML
 	private TableView<User> table;
 	
@@ -70,6 +78,35 @@ public class findController implements Initializable {
        table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
        
     }
+    
+    public void handleBtnBack(ActionEvent event) {
+		try {
+			StackPane root = (StackPane) btnMain.getScene().getRoot();
+			
+			finddelete.setTranslateX(0);
+			
+			Timeline timeline = new Timeline();
+			KeyValue keyValue = new KeyValue(finddelete.translateXProperty(), 350);
+			KeyFrame keyFrame = new KeyFrame(
+	    		Duration.millis(100), 
+	    		new EventHandler<ActionEvent>() {
+		        	@Override
+		        	public void handle(ActionEvent event) {
+		        		root.getChildren().remove(finddelete);
+		        	}
+		        }, 
+		        keyValue
+	        );
+			timeline.getKeyFrames().add(keyFrame);
+			timeline.play();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+    
+    public void exit(ActionEvent event) {
+		Platform.exit();
+	}
     
  /*   
     //등록버튼
