@@ -52,9 +52,9 @@ public class SearchController implements Initializable {
         lost.setCellValueFactory(cellData -> cellData.getValue().lostProperty());
 		
         List<Order> orders = new ArrayList<>();
-        orders.add(new Order(221010, "무궁화호", "아이폰"));
-        orders.add(new Order(221110, "ktx", "지갑"));
-        orders.add(new Order(221214, "srt", "버스"));
+        orders.add(new Order("무궁화호", 221010, "아이폰"));
+        orders.add(new Order("ktx", 221110, "지갑"));
+        orders.add(new Order("srt", 221214, "버스"));
 
 
         FilteredList<Order> filteredData = new FilteredList<>(FXCollections.observableList(orders));
@@ -113,9 +113,9 @@ public class SearchController implements Initializable {
         StringProperty train;
         StringProperty lost;
 
-        public Order(Integer date, String train, String lost) {
+        public Order(String train, Integer date, String lost) {
+        	this.train = new SimpleStringProperty(train);
             this.date = new SimpleIntegerProperty(date);
-            this.train = new SimpleStringProperty(train);
             this.lost = new SimpleStringProperty(lost);
         }
 
