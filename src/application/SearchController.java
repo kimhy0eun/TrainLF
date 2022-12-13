@@ -38,10 +38,10 @@ public class SearchController implements Initializable {
    @FXML Button exit;
    @FXML private Button searchlist;
    
-   @FXML private TableView<Order> trainTable;
-   @FXML private TableColumn<Order, Integer> date;
-   @FXML private TableColumn<Order, String> train;
-   @FXML private TableColumn<Order, String> lost;
+   @FXML private TableView<LostList> trainTable;
+   @FXML private TableColumn<LostList, Integer> date;
+   @FXML private TableColumn<LostList, String> train;
+   @FXML private TableColumn<LostList, String> lost;
    @FXML private TextField searchBox;
       
    
@@ -51,22 +51,22 @@ public class SearchController implements Initializable {
         train.setCellValueFactory(cellData -> cellData.getValue().trainProperty());
         lost.setCellValueFactory(cellData -> cellData.getValue().lostProperty());
       
-        List<Order> orders = new ArrayList<>();
-        orders.add(new Order("무궁화호", 221010, "아이폰"));
-        orders.add(new Order("ktx", 221110, "지갑"));
-        orders.add(new Order("srt", 221214, "버스"));
+        List<LostList> lostlist = new ArrayList<>();
+        lostlist.add(new LostList("무궁화호", 221010, "아이폰"));
+        lostlist.add(new LostList("ktx", 221110, "지갑"));
+        lostlist.add(new LostList("srt", 221214, "버스"));
 
 
-        FilteredList<Order> filteredData = new FilteredList<>(FXCollections.observableList(orders));
+        FilteredList<LostList> filteredData = new FilteredList<>(FXCollections.observableList(lostlist));
         trainTable.setItems(filteredData);
         
         trainTable.setRowFactory(tableView -> {
-            TableRow<Order> row = new TableRow<>();
+            TableRow<LostList> row = new TableRow<>();
             row.pseudoClassStateChanged(PseudoClass.getPseudoClass("highlighted"), false);
-            row.itemProperty().addListener((obs, oldOrder, newOrder) -> {
-                boolean assignClass = filteredData.contains(newOrder) &&
-                        (newOrder.getLost().equals("아이폰") ||
-                                newOrder.getLost().equals("버즈"));
+            row.itemProperty().addListener((obs, oldLostList, newLostList) -> {
+                boolean assignClass = filteredData.contains(newLostList) &&
+                        (newLostList.getLost().equals("아이폰") ||
+                                newLostList.getLost().equals("버즈"));
 
                 row.pseudoClassStateChanged(PseudoClass.getPseudoClass("highlighted"), assignClass);
             });
@@ -75,32 +75,32 @@ public class SearchController implements Initializable {
         });
         
         searchBox.textProperty().addListener((observable, oldValue, newValue) ->
-        trainTable.setItems(filterList(orders, newValue.toLowerCase()))
+        trainTable.setItems(filterList(lostlist, newValue.toLowerCase()))
         );
    }
    
-   private Predicate<Order> createPredicate(String searchText){
-        return order -> {
+   private Predicate<LostList> createPredicate(String searchText){
+        return LList -> {
             if (searchText == null || searchText.isEmpty()) return true;
-            return searchFindsOrder(order, searchText);
+            return searchFindsOrder(LList, searchText);
         };
     }
 
-    private ObservableList<Order> filterList(List<Order> list, String searchText){
-        List<Order> filteredList = new ArrayList<>();
+    private ObservableList<LostList> filterList(List<LostList> list, String searchText){
+        List<LostList> filteredList = new ArrayList<>();
 
-        for (Order order : list){
-            if(searchFindsOrder(order, searchText)){
-                filteredList.add(order);
+        for (LostList LList : list){
+            if(searchFindsOrder(LList, searchText)){
+                filteredList.add(LList);
             }
         }
         return FXCollections.observableList(filteredList);
     }
 
-    private boolean searchFindsOrder(Order order, String searchText){
-        return (order.getLost().toLowerCase().contains(searchText)) ||
-                (order.getTrain().toLowerCase().contains(searchText)) ||
-                Integer.valueOf(order.getDate()).toString().equals(searchText);
+    private boolean searchFindsOrder(LostList LList, String searchText){
+        return (LList.getLost().toLowerCase().contains(searchText)) ||
+                (LList.getTrain().toLowerCase().contains(searchText)) ||
+                Integer.valueOf(LList.getDate()).toString().equals(searchText);
     }
     
     public void handleClearSearchText(ActionEvent event) {
@@ -108,12 +108,12 @@ public class SearchController implements Initializable {
         event.consume();
     }
 
-    public static class Order {
+    public static class LostList {
         IntegerProperty date;
         StringProperty train;
         StringProperty lost;
 
-        public Order(String train, Integer date, String lost) {
+        public LostList(String train, Integer date, String lost) {
            this.train = new SimpleStringProperty(train);
             this.date = new SimpleIntegerProperty(date);
             this.lost = new SimpleStringProperty(lost);
