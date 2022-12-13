@@ -33,25 +33,24 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 public class SearchController implements Initializable {
-
-	@FXML private StackPane search;
-	@FXML private Button btnMain;
-	@FXML Button exit;
-	@FXML private Button searchlist;
-	
-	@FXML private TableView<Order> trainTable;
-	@FXML private TableColumn<Order, Integer> date;
-	@FXML private TableColumn<Order, String> train;
-	@FXML private TableColumn<Order, String> lost;
-	@FXML private TextField searchBox;
-		
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+   @FXML private StackPane search;
+   @FXML private Button btnMain;
+   @FXML Button exit;
+   @FXML private Button searchlist;
+   
+   @FXML private TableView<Order> trainTable;
+   @FXML private TableColumn<Order, Integer> date;
+   @FXML private TableColumn<Order, String> train;
+   @FXML private TableColumn<Order, String> lost;
+   @FXML private TextField searchBox;
+      
+   
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
         date.setCellValueFactory(cellData -> cellData.getValue().dateProperty().asObject());
         train.setCellValueFactory(cellData -> cellData.getValue().trainProperty());
         lost.setCellValueFactory(cellData -> cellData.getValue().lostProperty());
-		
+      
         List<Order> orders = new ArrayList<>();
         orders.add(new Order("무궁화호", 221010, "아이폰"));
         orders.add(new Order("ktx", 221110, "지갑"));
@@ -78,9 +77,9 @@ public class SearchController implements Initializable {
         searchBox.textProperty().addListener((observable, oldValue, newValue) ->
         trainTable.setItems(filterList(orders, newValue.toLowerCase()))
         );
-	}
-	
-	private Predicate<Order> createPredicate(String searchText){
+   }
+   
+   private Predicate<Order> createPredicate(String searchText){
         return order -> {
             if (searchText == null || searchText.isEmpty()) return true;
             return searchFindsOrder(order, searchText);
@@ -115,7 +114,7 @@ public class SearchController implements Initializable {
         StringProperty lost;
 
         public Order(String train, Integer date, String lost) {
-        	this.train = new SimpleStringProperty(train);
+           this.train = new SimpleStringProperty(train);
             this.date = new SimpleIntegerProperty(date);
             this.lost = new SimpleStringProperty(lost);
         }
@@ -156,55 +155,51 @@ public class SearchController implements Initializable {
             return lost;
         }
     }
-    
-	static String complete; //스태틱을 안붙이면 씬을 넘어갈때 값이 저장이 안됨.
-	String getdestination() {
-		return complete;
-	}
-	public void handleBtnBack(ActionEvent event) {
-		try {
-			StackPane root = (StackPane) btnMain.getScene().getRoot();
-			
-			search.setTranslateX(0);
-			
-			Timeline timeline = new Timeline();
-			KeyValue keyValue = new KeyValue(search.translateXProperty(), 350);
-			KeyFrame keyFrame = new KeyFrame(
-	    		Duration.millis(100), 
-	    		new EventHandler<ActionEvent>() {
-		        	@Override
-		        	public void handle(ActionEvent event) {
-		        		root.getChildren().remove(search);
-		        	}
-		        }, 
-		        keyValue
-	        );
-			timeline.getKeyFrames().add(keyFrame);
-			timeline.play();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	   public void searchlist(ActionEvent event) {
-		      try {
-		         Parent login= FXMLLoader.load(getClass().getResource("finddelete.fxml"));
-		         StackPane root = (StackPane) searchlist.getScene().getRoot();
-		         root.getChildren().add(login);
 
-		         login.setTranslateX(350);
+   public void handleBtnBack(ActionEvent event) {
+      try {
+         StackPane root = (StackPane) btnMain.getScene().getRoot();
+         
+         search.setTranslateX(0);
+         
+         Timeline timeline = new Timeline();
+         KeyValue keyValue = new KeyValue(search.translateXProperty(), 350);
+         KeyFrame keyFrame = new KeyFrame(
+             Duration.millis(100), 
+             new EventHandler<ActionEvent>() {
+                 @Override
+                 public void handle(ActionEvent event) {
+                    root.getChildren().remove(search);
+                 }
+              }, 
+              keyValue
+           );
+         timeline.getKeyFrames().add(keyFrame);
+         timeline.play();
+      } catch(Exception e) {
+         e.printStackTrace();
+      }
+   }
+      public void searchlist(ActionEvent event) {
+            try {
+               Parent login= FXMLLoader.load(getClass().getResource("finddelete.fxml"));
+               StackPane root = (StackPane) searchlist.getScene().getRoot();
+               root.getChildren().add(login);
 
-		         Timeline timeline = new Timeline();
-		         KeyValue keyValue = new KeyValue(login.translateXProperty(), 0);
-		         KeyFrame keyFrame = new KeyFrame(Duration.millis(100), keyValue);
-		         timeline.getKeyFrames().add(keyFrame);
-		         timeline.play();
-		      } catch(Exception e) {
-		         e.printStackTrace();
-		      }
-		   }
-		   
+               login.setTranslateX(350);
 
-	public void exit(ActionEvent event) {
-		Platform.exit();
-	}
+               Timeline timeline = new Timeline();
+               KeyValue keyValue = new KeyValue(login.translateXProperty(), 0);
+               KeyFrame keyFrame = new KeyFrame(Duration.millis(100), keyValue);
+               timeline.getKeyFrames().add(keyFrame);
+               timeline.play();
+            } catch(Exception e) {
+               e.printStackTrace();
+            }
+         }
+         
+
+   public void exit(ActionEvent event) {
+      Platform.exit();
+   }
 }
