@@ -48,13 +48,6 @@ public class RegisterController implements Initializable {
     
    
     
-    static String complete; //스태틱을 안붙이면 씬을 넘어갈때 값이 저장이 안됨.
-   String getdestination() {
-      return complete;
-   }
-    
-    
-    
     ObservableList<User> list = FXCollections.observableArrayList(
           new User(new SimpleStringProperty("ex)무궁화호"),new SimpleIntegerProperty(221010),new SimpleStringProperty("ex)아이폰")));
     
