@@ -46,9 +46,9 @@
                   <Button layoutX="299.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleClearSearchText" prefHeight="30.0" prefWidth="33.0" text="X" />
                   <TableView fx:id="trainTable" layoutX="18.0" layoutY="87.0" prefHeight="278.0" prefWidth="316.0">
                     <columns>
-                        <TableColumn fx:id="date" prefWidth="104.0" text="기차종류" />
-                      <TableColumn fx:id="train" prefWidth="105.59997177124023" text="습득날짜" />
-                      <TableColumn fx:id="lost" prefWidth="105.60005187988281" text="분실물 종류" />
+                      <TableColumn fx:id="train" prefWidth="105.59997177124023" text="기차  종류" />
+                        <TableColumn fx:id="date" prefWidth="104.0" text="습득  날짜" />
+                      <TableColumn fx:id="lost" prefWidth="105.60005187988281" text="분실물  종류" />
                     </columns>
                   </TableView>
                   <Button fx:id="searchlist" layoutX="283.0" layoutY="373.0" mnemonicParsing="false" onAction="#searchlist" text="찾기">

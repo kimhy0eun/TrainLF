@@ -33,29 +33,29 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 public class SearchController implements Initializable {
+
 	@FXML private StackPane search;
-	@FXML private StackPane traintype;
 	@FXML private Button btnMain;
 	@FXML Button exit;
 	@FXML private Button searchlist;
 	
 	@FXML private TableView<Order> trainTable;
-	@FXML private TableColumn<Order, Integer> train;
-	@FXML private TableColumn<Order, String> date;
+	@FXML private TableColumn<Order, Integer> date;
+	@FXML private TableColumn<Order, String> train;
 	@FXML private TableColumn<Order, String> lost;
 	@FXML private TextField searchBox;
 		
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		train.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
-        date.setCellValueFactory(cellData -> cellData.getValue().stateProperty());
-        lost.setCellValueFactory(cellData -> cellData.getValue().cityProperty());
+        date.setCellValueFactory(cellData -> cellData.getValue().dateProperty().asObject());
+        train.setCellValueFactory(cellData -> cellData.getValue().trainProperty());
+        lost.setCellValueFactory(cellData -> cellData.getValue().lostProperty());
 		
         List<Order> orders = new ArrayList<>();
-        orders.add(new Order(221010, "무궁화호", "아이폰"));
-        orders.add(new Order(221110, "ktx", "지갑"));
-        orders.add(new Order(221214, "srt", "버스"));
+        orders.add(new Order("무궁화호", 221010, "아이폰"));
+        orders.add(new Order("ktx", 221110, "지갑"));
+        orders.add(new Order("srt", 221214, "버스"));
 
 
         FilteredList<Order> filteredData = new FilteredList<>(FXCollections.observableList(orders));
@@ -66,8 +66,8 @@ public class SearchController implements Initializable {
             row.pseudoClassStateChanged(PseudoClass.getPseudoClass("highlighted"), false);
             row.itemProperty().addListener((obs, oldOrder, newOrder) -> {
                 boolean assignClass = filteredData.contains(newOrder) &&
-                        (newOrder.getCity().equals("New York") ||
-                                newOrder.getCity().equals("Boston"));
+                        (newOrder.getLost().equals("아이폰") ||
+                                newOrder.getLost().equals("버즈"));
 
                 row.pseudoClassStateChanged(PseudoClass.getPseudoClass("highlighted"), assignClass);
             });
@@ -99,9 +99,9 @@ public class SearchController implements Initializable {
     }
 
     private boolean searchFindsOrder(Order order, String searchText){
-        return (order.getCity().toLowerCase().contains(searchText)) ||
-                (order.getState().toLowerCase().contains(searchText)) ||
-                Integer.valueOf(order.getId()).toString().equals(searchText);
+        return (order.getLost().toLowerCase().contains(searchText)) ||
+                (order.getTrain().toLowerCase().contains(searchText)) ||
+                Integer.valueOf(order.getDate()).toString().equals(searchText);
     }
     
     public void handleClearSearchText(ActionEvent event) {
@@ -110,50 +110,50 @@ public class SearchController implements Initializable {
     }
 
     public static class Order {
-        IntegerProperty id;
-        StringProperty state;
-        StringProperty city;
+        IntegerProperty date;
+        StringProperty train;
+        StringProperty lost;
 
-        public Order(Integer id, String state, String city) {
-            this.id = new SimpleIntegerProperty(id);
-            this.state = new SimpleStringProperty(state);
-            this.city = new SimpleStringProperty(city);
+        public Order(String train, Integer date, String lost) {
+        	this.train = new SimpleStringProperty(train);
+            this.date = new SimpleIntegerProperty(date);
+            this.lost = new SimpleStringProperty(lost);
         }
 
-        public int getId() {
-            return id.get();
+        public int getDate() {
+            return date.get();
         }
 
-        public void setId(int id) {
-            this.id.set(id);
+        public void setDate(int date) {
+            this.date.set(date);
         }
 
-        public IntegerProperty idProperty() {
-            return id;
+        public IntegerProperty dateProperty() {
+            return date;
         }
 
-        public String getState() {
-            return state.get();
+        public String getTrain() {
+            return train.get();
         }
 
-        public void setState(String state) {
-            this.state.set(state);
+        public void setTrain(String train) {
+            this.train.set(train);
         }
 
-        public StringProperty stateProperty() {
-            return state;
+        public StringProperty trainProperty() {
+            return train;
         }
 
-        public String getCity() {
-            return city.get();
+        public String getLost() {
+            return lost.get();
         }
 
-        public void setCity(String city) {
-            this.city.set(city);
+        public void setLost(String lost) {
+            this.lost.set(lost);
         }
 
-        public StringProperty cityProperty() {
-            return city;
+        public StringProperty lostProperty() {
+            return lost;
         }
     }
     
