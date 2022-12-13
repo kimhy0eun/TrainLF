@@ -82,7 +82,7 @@ public class SearchController implements Initializable {
    private Predicate<LostList> createPredicate(String searchText){
         return LList -> {
             if (searchText == null || searchText.isEmpty()) return true;
-            return searchFindsOrder(LList, searchText);
+            return searchFindsLostList(LList, searchText);
         };
     }
 
@@ -90,14 +90,14 @@ public class SearchController implements Initializable {
         List<LostList> filteredList = new ArrayList<>();
 
         for (LostList LList : list){
-            if(searchFindsOrder(LList, searchText)){
+            if(searchFindsLostList(LList, searchText)){
                 filteredList.add(LList);
             }
         }
         return FXCollections.observableList(filteredList);
     }
 
-    private boolean searchFindsOrder(LostList LList, String searchText){
+    private boolean searchFindsLostList(LostList LList, String searchText){
         return (LList.getLost().toLowerCase().contains(searchText)) ||
                 (LList.getTrain().toLowerCase().contains(searchText)) ||
                 Integer.valueOf(LList.getDate()).toString().equals(searchText);
